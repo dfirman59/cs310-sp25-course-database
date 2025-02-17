@@ -27,7 +27,13 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+                ps = conn.prepareStatement(QUERY_CREATE);
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                ps.setInt(3, crn);
+
+                int rowsAffected = ps.executeUpdate();
+                result = (rowsAffected > 0);
                 
             }
             
@@ -58,7 +64,13 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+                ps = conn.prepareStatement(QUERY_DELETE);
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                ps.setInt(3, crn);
+
+                int rowsAffected = ps.executeUpdate();
+                result = (rowsAffected > 0);
                 
             }
             
@@ -88,7 +100,12 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+                ps = conn.prepareStatement(QUERY_DELETE_ALL);
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+
+                int rowsAffected = ps.executeUpdate();
+                result = (rowsAffected > 0);
                 
             }
             
@@ -120,7 +137,12 @@ public class RegistrationDAO {
             
             if (conn.isValid(0)) {
                 
-                // INSERT YOUR CODE HERE
+                ps = conn.prepareStatement(QUERY_LIST);
+                ps.setInt(1, studentid);
+                ps.setInt(2, termid);
+                rs = ps.executeQuery();
+
+                result = DAOUtility.getResultSetAsJson(rs);
                 
             }
             
